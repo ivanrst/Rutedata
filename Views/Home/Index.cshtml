@@ -1,0 +1,68 @@
+﻿@model Rutedata.Models.StopPlace
+
+@System.Globalization.CultureInfo.CurrentUICulture
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>@Html.DisplayFor(modelItem => Model.Name)</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EstimatedCalls[0].AimedArrivalTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstimatedCalls[0].Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstimatedCalls[0].DestinationDisplay.FrontText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstimatedCalls[0].ExpectedArrivalTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstimatedCalls[0].RealTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstimatedCalls[0].Late)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.EstimatedCalls.Count; i++)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.EstimatedCalls[i].AimedArrivalTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.EstimatedCalls[i].Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.EstimatedCalls[i].DestinationDisplay.FrontText)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.EstimatedCalls[i].ExpectedArrivalTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.EstimatedCalls[i].RealTime)
+                </td>
+                <td>
+                    @if (Model.EstimatedCalls[i].Late)
+                    {
+                        <span style="color:red;">True</span>
+                    }
+                    else
+                    {
+                        <span style="color:green;">False</span>
+                    }
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
